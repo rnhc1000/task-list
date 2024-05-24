@@ -1,0 +1,40 @@
+<header
+  [ngClass]="{
+    'has-items': inputListItems.length
+  }"
+>
+<h1>Daily Tasks List</h1>
+
+  @if(inputListItems.length){
+  <date-pipe/>
+  }
+
+  <div
+    [ngClass]="{
+      container: inputListItems.length
+    }"
+  >
+    <label
+      class="input-label-text"
+      for="inputValue"
+      [ngClass]="{
+        'remove-margin-bottom': !inputListItems.length
+      }"
+    >
+      <input
+        type="text"
+        (keyup.enter)="focusAndAddItem(inputText.value)"
+        placeholder="Add a new item!"
+        id="inputValue"
+        autofocus
+        #inputText
+      />
+
+      <button
+        class="btn btn-primary-circle"
+        title="Add a new item!"
+        (click)="focusAndAddItem(inputText.value)"
+      ></button>
+    </label>
+  </div>
+</header>
